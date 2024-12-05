@@ -42,11 +42,13 @@ header {
     display: flex;
     align-items: center;
     gap: 15px;
+    position: relative;
 }
 
 .nav-links li {
     margin: 0;
     display: inline-block; /* Macht Logout-Formular und Links inline */
+    position: relative;
 }
 
 .nav-links a, .nav-links form input[type="submit"] {
@@ -65,7 +67,7 @@ header {
     background-color: #575757;
 }
 
-.nav-links .active a {
+.nav-links > .active > a {
     background-color: #575757;
     font-weight: bold;
     color: yellow;
@@ -74,6 +76,45 @@ header {
 .nav-links form {
     margin: 0;
     display: inline-block;
+}
+
+/* Secondary menu styles */
+.nav-links li ul {
+    list-style: none;
+    position: absolute;
+    top: 150%;
+    left: 0;
+    background-color: #444;
+    padding: 0;
+    margin: 0;
+    display: none; /* Initially hidden */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+.nav-links li ul li {
+    padding: 10px 15px;
+    white-space: nowrap;
+}
+
+.nav-links li ul li:first-child {
+    border-bottom: 1px solid;
+}
+
+.nav-links li ul li a {
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    display: block;
+}
+
+.nav-links li ul li a:hover {
+    background-color: #575757;
+}
+
+.nav-links li:hover > ul {
+    display: block; /* Show the submenu on hover */
 }
 
 /* Konsistentes Styling für Submit-Button */

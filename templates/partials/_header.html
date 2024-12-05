@@ -7,6 +7,13 @@
             <li class="{% if request.path == '/intro/' %}active{% endif %}"><a href="{% url "myapp:index" %}">Home</a></li>
             <li class="{% if request.path == '/movies/watchlist/' %}active{% endif %}"><a href="{% url "movies:watchlist" %}">My Watchlist</a></li>
             <li class="{% if request.path == '/movies/add_movie/' %}active{% endif %}"><a href="{% url "movies:add_movie" %}">Add Movie</a></li>
+            <li class="{% if request.path == '/currency/' or request.path == '/weather/' %}active{% endif %}">
+                <a href="{% url "currency:currency" %}">Fun</a>
+                <ul>
+                    <li class="{% if request.path == '/currency/' %}active{% endif %}"><a href="{% url "currency:currency" %}">Currency Converter</a></li>
+                    <li class="{% if request.path == '/weather/' %}active{% endif %}"><a href="{% url "weather:weather" %}">Weather Checker</a></li>
+                </ul>
+            </li>
 
             {% if user.is_authenticated %}    
                 <li>
