@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Watchlist{% endblock title %}
+{% block body_class %}watchlist{% endblock body_class %}
+{% block content %}
+<div class="watchlist-container">
+    <h1>My Lovely Movies</h1>
+    {% if movies %}
+        <ul class="movie-list">
+            {% for movie in movies %}
+                <li class="movie-item">
+                    <div class="movie-details">
+                        <h2>{{ movie.title }}</h2>
+                        <p>{{ movie.release_year }} | {{ movie.get_genre_display }}</p>
+                        <p>Directed by: {{ movie.director }}</p>
+                        {% if movie.imdb_url %}
+                            <a href="{{ movie.imdb_url }}" target="_blank" class="movie-link">View on IMDb</a>
+                        {% endif %}
+                    </div>
+                    <div class="movie-actions">
+                        <a href="{% url 'movies:edit_movie' movie.id %}" class="btn btn-edit">Edit</a>
+                        <a href="{% url 'movies:delete_movie' movie.id %}" class="btn btn-delete">Delete</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No movies added yet</p>
+    {% endif %}
+    <a href="{% url 'movies:add_movie' %}" class="btn btn-add">Add New Movie</a>
+</div>
+{% endblock content %}

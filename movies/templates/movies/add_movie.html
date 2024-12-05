@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Movie{% endblock title %}
+
+{% block content %}
+<h1>Add New Movie</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add Movie">
+</form>
+<p><a href="{% url "movies:watchlist" %}">Go to Watchlist</a> | <a href="{% url "movies:upload_csv" %}">Upload a CSV File</a></p>
+{% endblock content %}

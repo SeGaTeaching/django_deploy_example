@@ -1,0 +1,33 @@
+<header>
+    <nav class='navbar'>
+        <div class="nav-logo">
+            <a href="{% url "myapp:index" %}">Movie Watchlist</a>
+        </div>
+        <ul class='nav-links'>
+            <li class="{% if request.path == '/intro/' %}active{% endif %}"><a href="{% url "myapp:index" %}">Home</a></li>
+            <li class="{% if request.path == '/movies/watchlist/' %}active{% endif %}"><a href="{% url "movies:watchlist" %}">My Watchlist</a></li>
+            <li class="{% if request.path == '/movies/add_movie/' %}active{% endif %}"><a href="{% url "movies:add_movie" %}">Add Movie</a></li>
+
+            {% if user.is_authenticated %}    
+                <li>
+                    <form action="{% url 'accounts:logout' %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Logout">
+                    </form>
+                </li>
+            {% else %}
+                <li class="{% if request.path == '/accounts/login/' %}active{% endif %}">
+                    <a href="{% url 'accounts:login' %}">Login</a>
+                </li>
+                <li class="{% if request.path == '/accounts/register/' %}active{% endif %}">
+                    <a href="{% url 'accounts:register' %}">Register</a>
+                </li>
+            {% endif %}
+            {% if user.is_staff %}
+                <li>
+                    <a href="/admin/">Admin-Area</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

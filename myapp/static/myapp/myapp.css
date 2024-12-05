@@ -1,0 +1,8 @@
+h1 {
+    font-size: 15rem;
+}
+
+main > * {
+    max-width: 100%;
+    text-align: center;
+}
