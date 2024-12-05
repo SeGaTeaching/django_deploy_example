@@ -1,11 +1,12 @@
 import requests
 import json
+import os
 from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
 def currency_view(request):
-    api_key = '55d50301c8add778a9ca4369'
+    api_key = os.environ.get('CURRENCY_API_KEY')
     responsy = response = requests.get(f'https://v6.exchangerate-api.com/v6/{api_key}/latest/EUR')
     daty = responsy.json()
     CURRENCY_CHOICES = daty['conversion_rates'].keys()
