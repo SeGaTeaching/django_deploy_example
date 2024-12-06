@@ -85,7 +85,7 @@ header {
     top: 150%;
     left: 0;
     background-color: #444;
-    padding: 0;
+    padding: 0;             
     margin: 0;
     display: none; /* Initially hidden */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
@@ -97,7 +97,7 @@ header {
     white-space: nowrap;
 }
 
-.nav-links li ul li:first-child {
+.nav-links li ul:first-child {
     border-bottom: 1px solid;
 }
 
